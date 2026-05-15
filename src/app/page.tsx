@@ -869,7 +869,7 @@ function ContactSection() {
           <RevealOnScroll className="lg:col-span-2">
             <div className="space-y-6">
               {[
-                { icon: Mail, label: "Email", value: "hello@nilegazer.dev", color: "#00FF9D" },
+                { icon: Mail, label: "Email", value: "jusspound@gmail.com", color: "#00FF9D" },
                 { icon: MapPin, label: "Location", value: "Remote / Worldwide", color: "#00A3FF" },
                 { icon: Globe, label: "Website", value: "nilegazer.dev", color: "#FF6B6B" },
               ].map(({ icon: Icon, label, value, color }) => (
