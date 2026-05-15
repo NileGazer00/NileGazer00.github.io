@@ -14,22 +14,53 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nile Gazer \u00b7 Full Stack Developer",
-  description: "Nile Gazer is a full-stack developer specializing in JavaScript, React, Node.js, and building modern web applications.",
-  keywords: ["Nile Gazer", "Full Stack Developer", "JavaScript", "React", "Node.js", "Web Development"],
-  authors: [{ name: "Nile Gazer" }],
+  title: "Nile Gazer | Full-Stack Developer & Open Source Contributor",
+  description:
+    "Nile Gazer is a full-stack developer specializing in JavaScript, TypeScript, Python, React, and Next.js. Builder of real software — from sentiment-driven trading bots to zero-dependency libraries. Available for hire.",
+  keywords: [
+    "Nile Gazer",
+    "Full Stack Developer",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Web Development",
+    "Open Source",
+    "Trading Bot",
+    "LeadGen.js",
+    "Freelance Developer",
+    "Remote Developer",
+  ],
+  authors: [{ name: "Nile Gazer", url: "https://nilegazer00.github.io" }],
+  creator: "Nile Gazer",
+  metadataBase: new URL("https://nilegazer00.github.io"),
   icons: {
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300ff9d'/%3E%3Ctext x='50' y='67' font-size='45' text-anchor='middle' fill='%230a0c10' font-weight='bold'%3ENG%3C/text%3E%3C/svg%3E",
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Nile Gazer \u00b7 Full Stack Developer",
-    description: "Full-stack JavaScript developer and open-source contributor.",
+    title: "Nile Gazer | Full-Stack Developer",
+    description:
+      "Building real software — from sentiment-driven trading bots to zero-dependency JavaScript libraries. Full-stack developer available for hire.",
     type: "website",
+    url: "https://nilegazer00.github.io",
+    siteName: "Nile Gazer Portfolio",
+    locale: "en_US",
   },
   twitter: {
-    card: "summary",
-    title: "Nile Gazer \u00b7 Full Stack Developer",
-    description: "Full-stack JavaScript developer and open-source contributor.",
+    card: "summary_large_image",
+    title: "Nile Gazer | Full-Stack Developer",
+    description:
+      "Building real software with JavaScript, Python, and modern web technologies. Available for hire.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -40,6 +71,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#0A0C10" />
+        <meta name="msapplication-TileColor" content="#00FF9D" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >

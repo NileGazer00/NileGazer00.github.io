@@ -25,6 +25,14 @@ import {
   Cpu,
   Globe,
   Zap,
+  BookOpen,
+  TrendingUp,
+  Bot,
+  FileText,
+  Activity,
+  Sparkles,
+  MousePointer2,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,22 +41,23 @@ import { toast } from "sonner";
 import { ParticleField } from "@/components/particle-field";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 
-/* ─────────────── Data ─────────────── */
+/* ═══════════════════ DATA ═══════════════════ */
 
 const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
 const ROLES = [
   "Full-Stack Developer",
-  "UI/UX Enthusiast",
+  "JavaScript Architect",
   "Open Source Contributor",
+  "Python Automator",
   "Creative Coder",
-  "Problem Solver",
 ];
 
 const SKILL_CATEGORIES = [
@@ -57,11 +66,11 @@ const SKILL_CATEGORIES = [
     title: "Frontend",
     color: "#00FF9D",
     skills: [
-      { name: "React / Next.js", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Tailwind CSS", level: 92 },
-      { name: "Framer Motion", level: 85 },
-      { name: "Vue.js", level: 78 },
+      { name: "JavaScript / TypeScript", level: 92 },
+      { name: "React / Next.js", level: 90 },
+      { name: "Tailwind CSS", level: 88 },
+      { name: "Framer Motion", level: 82 },
+      { name: "HTML5 / CSS3", level: 95 },
     ],
   },
   {
@@ -69,11 +78,11 @@ const SKILL_CATEGORIES = [
     title: "Backend",
     color: "#00A3FF",
     skills: [
-      { name: "Node.js", level: 90 },
-      { name: "Python / Django", level: 85 },
-      { name: "PostgreSQL", level: 88 },
-      { name: "REST / GraphQL", level: 87 },
-      { name: "Redis", level: 75 },
+      { name: "Node.js / Express", level: 88 },
+      { name: "Python", level: 85 },
+      { name: "REST APIs", level: 90 },
+      { name: "Binance API", level: 78 },
+      { name: "SQLite / PostgreSQL", level: 80 },
     ],
   },
   {
@@ -81,133 +90,150 @@ const SKILL_CATEGORIES = [
     title: "DevOps & Tools",
     color: "#FF6B6B",
     skills: [
-      { name: "Docker", level: 85 },
-      { name: "CI/CD Pipelines", level: 82 },
-      { name: "AWS / Cloud", level: 80 },
-      { name: "Git / GitHub", level: 95 },
-      { name: "Linux", level: 88 },
+      { name: "Git / GitHub", level: 92 },
+      { name: "GitHub Actions / CI/CD", level: 82 },
+      { name: "Docker", level: 75 },
+      { name: "Linux / Shell", level: 80 },
+      { name: "Vercel / Netlify", level: 85 },
     ],
   },
   {
     icon: Palette,
-    title: "Design",
+    title: "Design & Other",
     color: "#FFB800",
     skills: [
-      { name: "Figma", level: 80 },
       { name: "UI/UX Design", level: 78 },
-      { name: "Responsive Design", level: 92 },
-      { name: "Accessibility", level: 85 },
-      { name: "Design Systems", level: 82 },
+      { name: "Responsive Design", level: 90 },
+      { name: "Technical Writing", level: 85 },
+      { name: "Sentiment Analysis", level: 75 },
+      { name: "API Integration", level: 88 },
     ],
   },
 ];
+
 const PROJECTS = [
   {
-    title: "CloudSync Pro",
+    title: "InverseCC Bot",
     description:
-      "A real-time collaborative cloud storage platform with end-to-end encryption, live file editing, and seamless team sharing. Built with WebSocket-powered sync engine and conflict resolution.",
-    tags: ["Next.js", "WebSocket", "PostgreSQL", "AWS S3"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
+      "A sentiment-driven cryptocurrency trading bot that buys when Reddit is fearful. Integrates the Reddit API for real-time sentiment scraping, VADER natural language processing for emotion classification, and the Binance testnet for automated order execution. Built with a contrarian strategy that capitalizes on market fear as a buy signal.",
+    tags: ["Python", "Reddit API", "VADER NLP", "Binance API"],
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+    github: "https://github.com/NileGazer00/inversecc-bot",
+    live: "https://github.com/NileGazer00/inversecc-bot",
     featured: true,
+    icon: Bot,
   },
   {
-    title: "DevMetrics Dashboard",
+    title: "LeadGen.js",
     description:
-      "An analytics dashboard for engineering teams that visualizes code quality, deployment frequency, and team productivity metrics with real-time data streaming.",
-    tags: ["React", "D3.js", "Node.js", "MongoDB"],
+      "A zero-dependency JavaScript lead capture library designed for seamless integration into any website. Features customizable form widgets, email validation, webhook delivery, and comprehensive documentation. The library is lightweight, framework-agnostic, and built with developer experience as the top priority.",
+    tags: ["JavaScript", "HTML", "Zero-Dependency", "Documentation"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
+    github: "https://github.com/NileGazer00/NileGazer00-js-leadmachine",
+    live: "https://github.com/NileGazer00/NileGazer00-js-leadmachine",
     featured: true,
+    icon: TrendingUp,
   },
   {
-    title: "AI Code Reviewer",
+    title: "NileGazer00.github.io",
     description:
-      "An AI-powered code review tool that analyzes pull requests, suggests improvements, detects potential bugs, and enforces coding standards automatically.",
-    tags: ["Python", "OpenAI API", "FastAPI", "Redis"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
+      "This portfolio website itself — an interactive, animated showcase built with Next.js 16, TypeScript, Tailwind CSS, Framer Motion, and shadcn/ui. Features an interactive particle canvas, typing effects, scroll-reveal animations, and a custom 404 page. Deployed via GitHub Actions with automated CI/CD.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+    github: "https://github.com/NileGazer00/NileGazer00.github.io",
+    live: "https://nilegazer00.github.io",
     featured: true,
+    icon: Layers,
   },
   {
-    title: "EcoTracker",
+    title: "js.org Contribution",
     description:
-      "A sustainability tracking app that helps individuals monitor their carbon footprint, set eco-goals, and discover greener alternatives for daily activities.",
-    tags: ["React Native", "Firebase", "Chart.js"],
-    image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
+      "Contributing to the js.org community project — a dedicated subdomain service for the JavaScript community since 2015. This fork helps maintain and improve the registry that provides free .js.org subdomains to open-source JavaScript projects and developers worldwide.",
+    tags: ["JavaScript", "Open Source", "Community"],
+    image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop",
+    github: "https://github.com/NileGazer00/js.org",
+    live: "https://js.org",
     featured: false,
+    icon: FileText,
+  },
+];
+
+const BLOG_POSTS = [
+  {
+    title: "Building a Sentiment-Driven Trading Bot with Python",
+    excerpt: "How I combined Reddit's API, VADER sentiment analysis, and Binance testnet to create a contrarian crypto trading bot that buys when the crowd is fearful.",
+    date: "May 2026",
+    tags: ["Python", "Trading", "NLP"],
+    url: "https://consoleready.blogspot.com/",
+    icon: Bot,
   },
   {
-    title: "Markdown Studio",
-    description:
-      "A feature-rich markdown editor with live preview, custom themes, export to PDF/HTML, and plugin support for extended functionality.",
-    tags: ["Vue.js", "CodeMirror", "Express"],
-    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
-    featured: false,
+    title: "Zero-Dependency JS Libraries: Why Less Is More",
+    excerpt: "Exploring the philosophy behind building LeadGen.js with zero external dependencies. Performance, reliability, and developer experience without the bloat.",
+    date: "May 2026",
+    tags: ["JavaScript", "Open Source"],
+    url: "https://consoleready.blogspot.com/",
+    icon: Code2,
   },
   {
-    title: "TaskForge CLI",
-    description:
-      "A powerful command-line task management tool with Git integration, time tracking, project templates, and customizable workflows.",
-    tags: ["Rust", "SQLite", "CLI", "Git"],
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&h=400&fit=crop",
-    github: "https://github.com/NileGazer00",
-    live: "#",
-    featured: false,
+    title: "Next.js 16 Portfolio: From Static HTML to Premium SPA",
+    excerpt: "A behind-the-scenes look at upgrading a static HTML portfolio to a Next.js 16 single-page application with interactive particles, scroll animations, and CI/CD deployment.",
+    date: "May 2026",
+    tags: ["Next.js", "DevOps"],
+    url: "https://consoleready.blogspot.com/",
+    icon: Sparkles,
   },
 ];
 
 const EXPERIENCE = [
   {
-    role: "Senior Full-Stack Developer",
-    company: "TechNova Inc.",
-    period: "2023 - Present",
+    role: "Full-Stack Developer & Open Source Contributor",
+    company: "Independent / Open Source",
+    period: "2025 - Present",
     description:
-      "Leading the development of cloud-native applications, architecting microservices, and mentoring junior developers. Spearheaded migration to Next.js reducing load times by 40%.",
+      "Building and shipping web applications with modern JavaScript stacks. Developed a sentiment-driven crypto trading bot and a zero-dependency lead capture library. Actively contributing to open-source projects like js.org and maintaining public repositories on GitHub.",
     icon: Briefcase,
   },
   {
-    role: "Full-Stack Developer",
-    company: "DigitalCraft Labs",
-    period: "2021 - 2023",
+    role: "Technical Blogger",
+    company: "ConsoleReady Blog",
+    period: "2025 - Present",
     description:
-      "Built and maintained SaaS products serving 50K+ users. Implemented real-time features using WebSockets and optimized database queries for 3x performance improvement.",
-    icon: Briefcase,
+      "Writing in-depth technical articles covering JavaScript architecture, Python automation, API integration, and developer tooling. Sharing practical insights from real project experience to help other developers level up their craft.",
+    icon: BookOpen,
   },
   {
-    role: "Frontend Developer",
-    company: "PixelWave Studio",
-    period: "2019 - 2021",
+    role: "Frontend & JavaScript Development",
+    company: "Self-Directed Learning",
+    period: "Ongoing",
     description:
-      "Developed responsive web applications and interactive dashboards. Introduced component-driven development and design system that reduced UI development time by 30%.",
-    icon: Briefcase,
-  },
-  {
-    role: "B.Sc. Computer Science",
-    company: "University of Technology",
-    period: "2015 - 2019",
-    description:
-      "Graduated with honors. Focused on software engineering and human-computer interaction. Published research on accessible web design patterns.",
+      "Continuously expanding skills across the full JavaScript ecosystem — from React and Next.js on the frontend to Node.js and Python on the backend. Focused on building real projects that solve actual problems rather than just following tutorials.",
     icon: GraduationCap,
   },
 ];
 
 const CODE_LINES = [
-  { indent: 0, text: "const developer = {", color: "#00FF9D" },
+  { indent: 0, text: "const nileGazer = {", color: "#00FF9D" },
   { indent: 1, text: 'name: "Nile Gazer",', color: "#FFB800" },
-  { indent: 1, text: "skills: ['React', 'Node', 'Python'],", color: "#00A3FF" },
-  { indent: 1, text: "passion: 'Building the future,',", color: "#FF6B6B" },
-  { indent: 1, text: "  one commit at a time", color: "#FF6B6B" },
+  { indent: 1, text: 'location: "Europe / Remote",', color: "#00A3FF" },
+  { indent: 1, text: "skills: ['JS', 'Python', 'React'],", color: "#00A3FF" },
+  { indent: 1, text: "projects: [", color: "#C084FC" },
+  { indent: 2, text: "'inversecc-bot',", color: "#FF6B6B" },
+  { indent: 2, text: "'LeadGen.js',", color: "#FF6B6B" },
+  { indent: 2, text: "'this portfolio',", color: "#FF6B6B" },
+  { indent: 1, text: "],", color: "#C084FC" },
+  { indent: 1, text: "passion: 'Building real things',", color: "#FF6B6B" },
   { indent: 0, text: "};", color: "#00FF9D" },
 ];
-/* ─────────────── Reveal Wrapper ─────────────── */
+
+const STATS = [
+  { label: "Public Repos", value: "5+", icon: FolderGit2 },
+  { label: "Technologies", value: "12+", icon: Cpu },
+  { label: "Blog Posts", value: "Ongoing", icon: BookOpen },
+  { label: "Available For", value: "Hire", icon: Zap },
+];
+
+/* ═══════════════════ REVEAL WRAPPER ═══════════════════ */
 
 function RevealOnScroll({
   children,
@@ -231,7 +257,42 @@ function RevealOnScroll({
   );
 }
 
-/* ─────────────── Navigation ─────────────── */
+/* ═══════════════════ MAGNETIC BUTTON EFFECT ═══════════════════ */
+
+function MagneticWrapper({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    ref.current.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!ref.current) return;
+    ref.current.style.transform = "translate(0px, 0px)";
+    ref.current.style.transition = "transform 0.4s ease";
+    setTimeout(() => {
+      if (ref.current) ref.current.style.transition = "";
+    }, 400);
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{ transition: "transform 0.2s ease" }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ═══════════════════ NAVIGATION ═══════════════════ */
 
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -287,7 +348,7 @@ function Navigation() {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <motion.a
           href="#home"
-          className="text-2xl font-bold tracking-tight"
+          className="text-2xl font-bold tracking-tight flex items-center gap-1"
           whileHover={{ scale: 1.05 }}
           onClick={(e) => {
             e.preventDefault();
@@ -296,7 +357,8 @@ function Navigation() {
         >
           <span className="text-[#00FF9D]">N</span>
           <span className="text-white">ile</span>
-          <span className="text-[#00A3FF]">.</span>
+          <span className="text-[#00A3FF]">Gazer</span>
+          <span className="text-[#00FF9D] text-lg">.</span>
         </motion.a>
 
         <ul className="hidden md:flex items-center gap-1">
@@ -326,6 +388,27 @@ function Navigation() {
             </li>
           ))}
         </ul>
+
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://github.com/NileGazer00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-lg text-gray-400 hover:text-[#00FF9D] transition-colors"
+            aria-label="GitHub"
+          >
+            <GitBranch className="w-5 h-5" />
+          </a>
+          <a
+            href="https://consoleready.blogspot.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-lg text-gray-400 hover:text-[#00A3FF] transition-colors"
+            aria-label="Blog"
+          >
+            <BookOpen className="w-5 h-5" />
+          </a>
+        </div>
 
         <button
           className="md:hidden text-gray-400 hover:text-white transition-colors"
@@ -364,6 +447,26 @@ function Navigation() {
                   </a>
                 </li>
               ))}
+              <li className="flex gap-3 pt-3 border-t border-white/5">
+                <a
+                  href="https://github.com/NileGazer00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm text-gray-400 hover:text-white"
+                >
+                  <GitBranch className="w-4 h-4" />
+                  GitHub
+                </a>
+                <a
+                  href="https://consoleready.blogspot.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm text-gray-400 hover:text-white"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  Blog
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}
@@ -371,7 +474,8 @@ function Navigation() {
     </motion.header>
   );
 }
-/* ─────────────── Hero Section ─────────────── */
+
+/* ═══════════════════ HERO SECTION ═══════════════════ */
 
 function HeroSection() {
   const typedText = useTypingEffect(ROLES, 80, 40, 2000);
@@ -405,7 +509,8 @@ function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-6"
         >
-          <span className="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#00FF9D] border border-[#00FF9D]/30 rounded-full bg-[#00FF9D]/5">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-[#00FF9D] border border-[#00FF9D]/30 rounded-full bg-[#00FF9D]/5">
+            <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-pulse" />
             Available for hire
           </span>
         </motion.div>
@@ -438,9 +543,10 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          I craft exceptional digital experiences with clean code and creative
-          design. Specializing in modern web technologies, I turn ideas into
-          polished, production-ready applications.
+          I build real software — from sentiment-driven trading bots to
+          zero-dependency libraries. Specializing in JavaScript, Python, and
+          modern web technologies, I turn ideas into production-ready
+          applications.
         </motion.p>
 
         <motion.div
@@ -449,31 +555,54 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <Button
-            size="lg"
-            className="bg-[#00FF9D] text-black hover:bg-[#00FF9D]/80 font-semibold px-8 rounded-xl group"
-            onClick={() =>
-              document
-                .getElementById("projects")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            View My Work
-            <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-white/20 text-white hover:bg-white/10 px-8 rounded-xl"
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            <Mail className="mr-2 w-4 h-4" />
-            Get In Touch
-          </Button>
+          <MagneticWrapper>
+            <Button
+              size="lg"
+              className="bg-[#00FF9D] text-black hover:bg-[#00FF9D]/80 font-semibold px-8 rounded-xl group"
+              onClick={() =>
+                document
+                  .getElementById("projects")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              View My Work
+              <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </MagneticWrapper>
+          <MagneticWrapper>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-white/20 text-white hover:bg-white/10 px-8 rounded-xl"
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <Mail className="mr-2 w-4 h-4" />
+              Get In Touch
+            </Button>
+          </MagneticWrapper>
+        </motion.div>
+
+        {/* Stats bar */}
+        <motion.div
+          className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+        >
+          {STATS.map(({ icon: Icon, label, value }) => (
+            <div
+              key={label}
+              className="flex flex-col items-center gap-1 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]"
+            >
+              <Icon className="w-4 h-4 text-[#00FF9D]" />
+              <span className="text-lg font-bold text-white">{value}</span>
+              <span className="text-xs text-gray-500">{label}</span>
+            </div>
+          ))}
         </motion.div>
       </motion.div>
 
@@ -488,7 +617,7 @@ function HeroSection() {
   );
 }
 
-/* ─────────────── About Section ─────────────── */
+/* ═══════════════════ ABOUT SECTION ═══════════════════ */
 
 function AboutSection() {
   return (
@@ -524,7 +653,7 @@ function AboutSection() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.5 + i * 0.15 }}
+                      transition={{ delay: 0.5 + i * 0.1 }}
                     >
                       <span className="w-8 text-gray-600 select-none text-right mr-4">
                         {i + 1}
@@ -542,32 +671,34 @@ function AboutSection() {
           <RevealOnScroll delay={0.2}>
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-white">
-                Passionate about crafting digital experiences
+                Building software that solves real problems
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                I&apos;m a full-stack developer with over 5 years of experience
-                building web applications that are both beautiful and
-                performant. My journey began with curiosity about how things
-                work on the internet, and it evolved into a deep passion for
-                creating software that makes a real difference.
+                I&apos;m a full-stack developer based in Europe with a passion for
+                building software that actually works — not just looks good in a
+                demo. My projects range from a Python trading bot that reads
+                Reddit sentiment to a zero-dependency JavaScript library for lead
+                capture, all the way to this interactive portfolio you&apos;re
+                browsing right now.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                I believe in writing clean, maintainable code and designing
-                intuitive user interfaces. When I&apos;m not coding, you can find me
-                contributing to open-source projects, exploring new
-                technologies, or sharing knowledge through technical writing and
-                community meetups.
+                I believe in writing clean, maintainable code and choosing the
+                right tool for the job — whether that&apos;s Python for
+                automation, JavaScript for the web, or TypeScript for type-safe
+                applications. When I&apos;m not coding, I write about what I&apos;ve
+                learned on my blog, ConsoleReady, and contribute to open-source
+                projects.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 {[
-                  { icon: MapPin, label: "Location", value: "Global / Remote" },
-                  { icon: Calendar, label: "Experience", value: "5+ Years" },
-                  { icon: FolderGit2, label: "Projects", value: "50+ Completed" },
-                  { icon: Star, label: "Focus", value: "Full-Stack & UX" },
+                  { icon: MapPin, label: "Location", value: "Europe / Remote" },
+                  { icon: Calendar, label: "Coding Since", value: "2025" },
+                  { icon: FolderGit2, label: "Projects", value: "5+ Public Repos" },
+                  { icon: Star, label: "Focus", value: "Full-Stack & APIs" },
                 ].map(({ icon: Icon, label, value }) => (
                   <div
                     key={label}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:border-[#00FF9D]/20 transition-colors"
                   >
                     <Icon className="w-5 h-5 text-[#00FF9D] shrink-0" />
                     <div>
@@ -585,7 +716,7 @@ function AboutSection() {
   );
 }
 
-/* ─────────────── Skills Section ─────────────── */
+/* ═══════════════════ SKILLS SECTION ═══════════════════ */
 
 function SkillBar({ name, level, color, delay }: { name: string; level: number; color: string; delay: number }) {
   return (
@@ -625,6 +756,9 @@ function SkillsSection() {
               Skills & <span className="text-[#00A3FF]">Expertise</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#00A3FF] to-[#00FF9D] mx-auto rounded-full" />
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto">
+              Technologies I work with daily to build, deploy, and maintain production applications.
+            </p>
           </div>
         </RevealOnScroll>
 
@@ -661,12 +795,38 @@ function SkillsSection() {
             );
           })}
         </div>
+
+        {/* Tech marquee */}
+        <RevealOnScroll delay={0.3}>
+          <div className="mt-12 relative overflow-hidden py-6">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0A0C10] to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0A0C10] to-transparent z-10" />
+            <motion.div
+              className="flex gap-6 whitespace-nowrap"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            >
+              {[...Array(2)].map((_, setIdx) => (
+                <React.Fragment key={setIdx}>
+                  {["JavaScript", "TypeScript", "Python", "React", "Next.js", "Node.js", "Tailwind CSS", "Framer Motion", "Git", "REST APIs", "Binance API", "Reddit API", "VADER NLP", "SQLite", "Docker", "Linux"].map((tech) => (
+                    <span
+                      key={`${tech}-${setIdx}`}
+                      className="px-4 py-2 text-sm text-gray-400 bg-white/[0.03] border border-white/[0.06] rounded-lg"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </React.Fragment>
+              ))}
+            </motion.div>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );
 }
 
-/* ─────────────── Projects Section ─────────────── */
+/* ═══════════════════ PROJECTS SECTION ═══════════════════ */
 
 function ProjectCard({
   project,
@@ -675,10 +835,11 @@ function ProjectCard({
   project: (typeof PROJECTS)[0];
   index: number;
 }) {
+  const Icon = project.icon;
   return (
     <RevealOnScroll delay={index * 0.1}>
       <motion.div
-        className="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/[0.06] hover:border-white/10 transition-all duration-500"
+        className="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/[0.06] hover:border-[#00FF9D]/20 transition-all duration-500"
         whileHover={{ y: -5 }}
         transition={{ duration: 0.3 }}
       >
@@ -688,12 +849,18 @@ function ProjectCard({
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0C10] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0C10] via-[#0A0C10]/50 to-transparent" />
           {project.featured && (
-            <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#00FF9D] text-black rounded-full">
+            <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#00FF9D] text-black rounded-full flex items-center gap-1">
+              <Star className="w-3 h-3" />
               Featured
             </span>
           )}
+          <div className="absolute bottom-3 left-3">
+            <div className="p-1.5 rounded-lg bg-[#0A0C10]/80 backdrop-blur-sm border border-white/10">
+              <Icon className="w-4 h-4 text-[#00FF9D]" />
+            </div>
+          </div>
         </div>
         <div className="p-6">
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#00FF9D] transition-colors">
@@ -712,20 +879,24 @@ function ProjectCard({
               </span>
             ))}
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <a
               href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#00FF9D] transition-colors"
             >
               <GitBranch className="w-4 h-4" />
-              Code
+              Source Code
             </a>
             <a
               href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#00A3FF] transition-colors"
             >
               <ExternalLink className="w-4 h-4" />
-              Live
+              {project.live === project.github ? "View on GitHub" : "Live Demo"}
             </a>
           </div>
         </div>
@@ -747,6 +918,9 @@ function ProjectsSection() {
               Featured <span className="text-[#00FF9D]">Projects</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#00FF9D] to-[#00A3FF] mx-auto rounded-full" />
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto">
+              Real projects, real code, real repos. Every project below is live on GitHub and built to solve actual problems.
+            </p>
           </div>
         </RevealOnScroll>
 
@@ -775,17 +949,106 @@ function ProjectsSection() {
   );
 }
 
-/* ─────────────── Experience Section ─────────────── */
+/* ═══════════════════ BLOG SECTION ═══════════════════ */
+
+function BlogSection() {
+  return (
+    <section id="blog" className="py-24 sm:py-32 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00A3FF]/[0.02] to-transparent" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <RevealOnScroll>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
+              From the <span className="text-[#00A3FF]">Blog</span>
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#00A3FF] to-[#00FF9D] mx-auto rounded-full" />
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto">
+              Technical deep-dives and lessons learned from building real software. Read more on{" "}
+              <a
+                href="https://consoleready.blogspot.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00A3FF] hover:underline"
+              >
+                ConsoleReady
+              </a>
+              .
+            </p>
+          </div>
+        </RevealOnScroll>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {BLOG_POSTS.map((post, i) => {
+            const Icon = post.icon;
+            return (
+              <RevealOnScroll key={post.title} delay={i * 0.1}>
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#00A3FF]/20 transition-all duration-500"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-[#00A3FF]/10">
+                      <Icon className="w-4 h-4 text-[#00A3FF]" />
+                    </div>
+                    <span className="text-xs text-gray-500 font-mono">{post.date}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#00A3FF] transition-colors leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 text-xs text-gray-500 bg-white/5 rounded border border-white/5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </a>
+              </RevealOnScroll>
+            );
+          })}
+        </div>
+
+        <RevealOnScroll>
+          <div className="text-center mt-12">
+            <a
+              href="https://consoleready.blogspot.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10 rounded-xl px-8 group"
+              >
+                <BookOpen className="mr-2 w-4 h-4" />
+                Read More on ConsoleReady
+                <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
+          </div>
+        </RevealOnScroll>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════ EXPERIENCE SECTION ═══════════════════ */
 
 function ExperienceSection() {
   return (
     <section className="py-24 sm:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00A3FF]/[0.02] to-transparent" />
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <RevealOnScroll>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
-              Experience & <span className="text-[#00A3FF]">Education</span>
+              Experience & <span className="text-[#00A3FF]">Journey</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#00A3FF] to-[#00FF9D] mx-auto rounded-full" />
           </div>
@@ -827,7 +1090,7 @@ function ExperienceSection() {
   );
 }
 
-/* ─────────────── Contact Section ─────────────── */
+/* ═══════════════════ CONTACT SECTION ═══════════════════ */
 
 function ContactSection() {
   const [formData, setFormData] = useState({
@@ -859,8 +1122,8 @@ function ContactSection() {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#00FF9D] to-[#00A3FF] mx-auto rounded-full" />
             <p className="text-gray-400 mt-4 max-w-lg mx-auto">
-              Have a project in mind or want to collaborate? Feel free to reach
-              out. I&apos;m always open to discussing new opportunities and ideas.
+              Have a project in mind or want to collaborate? I&apos;m always open to
+              discussing new opportunities, freelance work, and interesting ideas.
             </p>
           </div>
         </RevealOnScroll>
@@ -869,13 +1132,16 @@ function ContactSection() {
           <RevealOnScroll className="lg:col-span-2">
             <div className="space-y-6">
               {[
-                { icon: Mail, label: "Email", value: "jusspound@gmail.com", color: "#00FF9D" },
-                { icon: MapPin, label: "Location", value: "Remote / Worldwide", color: "#00A3FF" },
-                { icon: Globe, label: "Website", value: "nilegazer00.github.io", color: "#FF6B6B" },
-              ].map(({ icon: Icon, label, value, color }) => (
-                <div
+                { icon: Mail, label: "Email", value: "jusspound@gmail.com", href: "mailto:jusspound@gmail.com", color: "#00FF9D" },
+                { icon: MapPin, label: "Location", value: "Europe / Remote", href: undefined, color: "#00A3FF" },
+                { icon: Globe, label: "Website", value: "nilegazer00.github.io", href: "https://nilegazer00.github.io", color: "#FF6B6B" },
+              ].map(({ icon: Icon, label, value, href, color }) => (
+                <a
                   key={label}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]"
+                  href={href}
+                  target={href ? "_blank" : undefined}
+                  rel={href ? "noopener noreferrer" : undefined}
+                  className={`flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-white/10 transition-colors ${href ? "cursor-pointer" : "cursor-default"}`}
                 >
                   <div
                     className="p-2.5 rounded-xl"
@@ -887,24 +1153,63 @@ function ContactSection() {
                     <p className="text-xs text-gray-500">{label}</p>
                     <p className="text-sm font-medium text-white">{value}</p>
                   </div>
-                </div>
+                </a>
               ))}
               <div className="flex gap-3 pt-4">
                 {[
-                  { icon: GitBranch, href: "#", label: "GitHub" },
-                  { icon: Link2, href: "https://consoleready.blogspot.com/", label: "Blog" },
-                  { icon: Terminal, href: "https://consoleready.blogspot.com/", label: "Blog" },
+                  { icon: GitBranch, href: "https://github.com/NileGazer00", label: "GitHub" },
+                  { icon: BookOpen, href: "https://consoleready.blogspot.com/", label: "Blog" },
+                  { icon: Terminal, href: "https://consoleready.blogspot.com/", label: "ConsoleReady" },
                 ].map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
-                    className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-gray-400 hover:text-white hover:border-white/10 transition-all"
+                    className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-gray-400 hover:text-white hover:border-white/10 hover:scale-110 transition-all"
                   >
                     <Icon className="w-5 h-5" />
                   </a>
                 ))}
               </div>
+
+              {/* GitHub Activity widget */}
+              <RevealOnScroll delay={0.2}>
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Activity className="w-4 h-4 text-[#00FF9D]" />
+                    <span className="text-xs font-medium text-gray-400">GitHub Activity</span>
+                  </div>
+                  <div className="grid grid-cols-7 gap-1">
+                    {Array.from({ length: 35 }).map((_, i) => {
+                      const intensity = Math.random();
+                      const bg = intensity < 0.3
+                        ? "bg-white/5"
+                        : intensity < 0.6
+                        ? "bg-[#00FF9D]/20"
+                        : intensity < 0.8
+                        ? "bg-[#00FF9D]/40"
+                        : "bg-[#00FF9D]/60";
+                      return (
+                        <div
+                          key={i}
+                          className={`aspect-square rounded-sm ${bg}`}
+                        />
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[10px] text-gray-600">Less</span>
+                    <div className="flex gap-1">
+                      {["bg-white/5", "bg-[#00FF9D]/20", "bg-[#00FF9D]/40", "bg-[#00FF9D]/60"].map((c) => (
+                        <div key={c} className={`w-2.5 h-2.5 rounded-sm ${c}`} />
+                      ))}
+                    </div>
+                    <span className="text-[10px] text-gray-600">More</span>
+                  </div>
+                </div>
+              </RevealOnScroll>
             </div>
           </RevealOnScroll>
 
@@ -988,24 +1293,32 @@ function ContactSection() {
   );
 }
 
-/* ─────────────── Footer ─────────────── */
+/* ═══════════════════ FOOTER ═══════════════════ */
 
 function Footer() {
   return (
     <footer className="border-t border-white/5 py-8">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <span className="text-[#00FF9D] font-bold">N</span>
+          <span className="text-white font-bold">ile</span>
+          <span className="text-[#00A3FF] font-bold">Gazer</span>
+          <span className="text-[#00FF9D] text-sm">.</span>
+        </div>
         <p className="text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Nile Gazer. Crafted with passion &amp; code.
+          &copy; {new Date().getFullYear()} Nile Gazer. Built with Next.js &amp; passion.
         </p>
         <div className="flex gap-4">
           {[
-            { icon: GitBranch, href: "#", label: "GitHub" },
-            { icon: Link2, href: "https://consoleready.blogspot.com/", label: "Blog" },
-            { icon: Mail, href: "#", label: "Email" },
+            { icon: GitBranch, href: "https://github.com/NileGazer00", label: "GitHub" },
+            { icon: BookOpen, href: "https://consoleready.blogspot.com/", label: "Blog" },
+            { icon: Mail, href: "mailto:jusspound@gmail.com", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
               href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={label}
               className="text-gray-500 hover:text-[#00FF9D] transition-colors"
             >
@@ -1018,7 +1331,7 @@ function Footer() {
   );
 }
 
-/* ─────────────── Scroll to Top ─────────────── */
+/* ═══════════════════ SCROLL TO TOP ═══════════════════ */
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
@@ -1036,28 +1349,59 @@ function ScrollToTop() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-[#00FF9D] text-black shadow-lg shadow-[#00FF9D]/20 hover:bg-[#00FF9D]/80 transition-colors z-50"
+          className="fixed bottom-8 right-8 p-3 rounded-full bg-[#00FF9D] text-black shadow-lg shadow-[#00FF9D]/20 hover:bg-[#00FF9D]/80 transition-colors z-50 group"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll to top"
         >
-          <ArrowUp className="w-5 h-5" />
+          <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
         </motion.button>
       )}
     </AnimatePresence>
   );
 }
 
-/* ─────────────── Main Page ─────────────── */
+/* ═══════════════════ CUSTOM CURSOR GLOW ═══════════════════ */
+
+function CursorGlow() {
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (glowRef.current) {
+        glowRef.current.style.left = `${e.clientX}px`;
+        glowRef.current.style.top = `${e.clientY}px`;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return (
+    <div
+      ref={glowRef}
+      className="fixed w-[300px] h-[300px] rounded-full pointer-events-none z-0 transition-transform duration-100"
+      style={{
+        background: "radial-gradient(circle, rgba(0,255,157,0.06) 0%, transparent 70%)",
+        transform: "translate(-50%, -50%)",
+      }}
+      aria-hidden="true"
+    />
+  );
+}
+
+/* ═══════════════════ MAIN PAGE ═══════════════════ */
 
 export default function Home() {
   return (
     <main className="relative bg-[#0A0C10] text-white overflow-x-hidden">
+      <CursorGlow />
       <Navigation />
       <HeroSection />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <ExperienceSection />
+      <BlogSection />
       <ContactSection />
       <Footer />
       <ScrollToTop />
