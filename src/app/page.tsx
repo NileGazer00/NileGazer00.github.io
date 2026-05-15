@@ -108,7 +108,7 @@ const PROJECTS = [
       "A real-time collaborative cloud storage platform with end-to-end encryption, live file editing, and seamless team sharing. Built with WebSocket-powered sync engine and conflict resolution.",
     tags: ["Next.js", "WebSocket", "PostgreSQL", "AWS S3"],
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: true,
   },
@@ -118,7 +118,7 @@ const PROJECTS = [
       "An analytics dashboard for engineering teams that visualizes code quality, deployment frequency, and team productivity metrics with real-time data streaming.",
     tags: ["React", "D3.js", "Node.js", "MongoDB"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: true,
   },
@@ -128,7 +128,7 @@ const PROJECTS = [
       "An AI-powered code review tool that analyzes pull requests, suggests improvements, detects potential bugs, and enforces coding standards automatically.",
     tags: ["Python", "OpenAI API", "FastAPI", "Redis"],
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: true,
   },
@@ -138,7 +138,7 @@ const PROJECTS = [
       "A sustainability tracking app that helps individuals monitor their carbon footprint, set eco-goals, and discover greener alternatives for daily activities.",
     tags: ["React Native", "Firebase", "Chart.js"],
     image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: false,
   },
@@ -148,7 +148,7 @@ const PROJECTS = [
       "A feature-rich markdown editor with live preview, custom themes, export to PDF/HTML, and plugin support for extended functionality.",
     tags: ["Vue.js", "CodeMirror", "Express"],
     image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: false,
   },
@@ -158,7 +158,7 @@ const PROJECTS = [
       "A powerful command-line task management tool with Git integration, time tracking, project templates, and customizable workflows.",
     tags: ["Rust", "SQLite", "CLI", "Git"],
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&h=400&fit=crop",
-    github: "#",
+    github: "https://github.com/NileGazer00",
     live: "#",
     featured: false,
   },
@@ -871,7 +871,7 @@ function ContactSection() {
               {[
                 { icon: Mail, label: "Email", value: "jusspound@gmail.com", color: "#00FF9D" },
                 { icon: MapPin, label: "Location", value: "Remote / Worldwide", color: "#00A3FF" },
-                { icon: Globe, label: "Website", value: "nilegazer.dev", color: "#FF6B6B" },
+                { icon: Globe, label: "Website", value: "nilegazer00.github.io", color: "#FF6B6B" },
               ].map(({ icon: Icon, label, value, color }) => (
                 <div
                   key={label}
@@ -892,8 +892,8 @@ function ContactSection() {
               <div className="flex gap-3 pt-4">
                 {[
                   { icon: GitBranch, href: "#", label: "GitHub" },
-                  { icon: Link2, href: "#", label: "LinkedIn" },
-                  { icon: Terminal, href: "#", label: "Blog" },
+                  { icon: Link2, href: "https://consoleready.blogspot.com/", label: "Blog" },
+                  { icon: Terminal, href: "https://consoleready.blogspot.com/", label: "Blog" },
                 ].map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
@@ -1000,7 +1000,7 @@ function Footer() {
         <div className="flex gap-4">
           {[
             { icon: GitBranch, href: "#", label: "GitHub" },
-            { icon: Link2, href: "#", label: "LinkedIn" },
+            { icon: Link2, href: "https://consoleready.blogspot.com/", label: "Blog" },
             { icon: Mail, href: "#", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
