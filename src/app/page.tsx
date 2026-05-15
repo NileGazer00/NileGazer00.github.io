@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
-  Github,
-  Linkedin,
+  GitBranch,
+  Link2,
   Mail,
   ExternalLink,
   ChevronDown,
@@ -24,15 +24,13 @@ import {
   FolderGit2,
   Cpu,
   Globe,
-  Database,
-  Shield,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import ParticleField from "@/components/particle-field";
+import { ParticleField } from "@/components/particle-field";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 
 /* ─────────────── Data ─────────────── */
@@ -301,7 +299,6 @@ function Navigation() {
           <span className="text-[#00A3FF]">.</span>
         </motion.a>
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map(({ label, href }) => (
             <li key={href}>
@@ -330,7 +327,6 @@ function Navigation() {
           ))}
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           className="md:hidden text-gray-400 hover:text-white transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -340,7 +336,6 @@ function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -722,7 +717,7 @@ function ProjectCard({
               href={project.github}
               className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#00FF9D] transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <GitBranch className="w-4 h-4" />
               Code
             </a>
             <a
@@ -896,8 +891,8 @@ function ContactSection() {
               ))}
               <div className="flex gap-3 pt-4">
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
+                  { icon: GitBranch, href: "#", label: "GitHub" },
+                  { icon: Link2, href: "#", label: "LinkedIn" },
                   { icon: Terminal, href: "#", label: "Blog" },
                 ].map(({ icon: Icon, href, label }) => (
                   <a
@@ -1004,8 +999,8 @@ function Footer() {
         </p>
         <div className="flex gap-4">
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
+            { icon: GitBranch, href: "#", label: "GitHub" },
+            { icon: Link2, href: "#", label: "LinkedIn" },
             { icon: Mail, href: "#", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
