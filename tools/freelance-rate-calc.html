@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Rate Calculator | Nile Gazer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .calc-container { max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 24px; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        input, select { width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #ccc; }
+        .result { background: #f0f4f8; padding: 1.5rem; border-radius: 16px; margin-top: 1.5rem; text-align: center; }
+        .rate { font-size: 2rem; font-weight: bold; color: #0a0a0a; }
+        .gate-message { background: #fef9e6; border-left: 4px solid #e6a017; padding: 1rem; margin-top: 1rem; }
+        .btn-gate { background: #e6a017; color: white; border: none; padding: 0.5rem 1rem; border-radius: 9999px; cursor: pointer; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav><div class="logo">Nile Gazer</div><ul><li><a href="../index.html">Home</a></li><li><a href="../lead-capture.html">Free Estimate</a></li></ul></nav>
+    </header>
+    <main>
+        <div class="calc-container">
+            <h1>Freelance Rate Calculator</h1>
+            <p>Estimate your hourly or project rate based on experience and costs.</p>
+            <div class="form-group"><label>Years of experience</label><select id="exp"><option value="1">0-2 years</option><option value="1.5">2-4 years</option><option value="2">4-6 years</option><option value="2.5">6-8 years</option><option value="3">8+ years</option></select></div>
+            <div class="form-group"><label>Monthly living costs (USD)</label><input type="number" id="costs" placeholder="e.g., 3000" value="4000"></div>
+            <div class="form-group"><label>Desired profit margin (%)</label><input type="number" id="profit" value="30"></div>
+            <button id="calculateBtn" style="background:#0a0a0a; color:white; padding:0.75rem; border-radius:9999px; width:100%;">Calculate →</button>
+            <div id="resultArea"></div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', () => {
+            const exp = parseFloat(document.getElementById('exp').value);
+            const costs = parseFloat(document.getElementById('costs').value);
+            const profit = parseFloat(document.getElementById('profit').value) / 100;
+            const baseHourly = (costs * (1 + profit)) / 160;
+            const multiplier = 1 + (exp - 1) * 0.15;
+            let hourly = Math.round(baseHourly * multiplier);
+            hourly = Math.max(hourly, 35);
+            document.getElementById('resultArea').innerHTML = 
+                <div class="result">
+                    <h3>Suggested Hourly Rate</h3>
+                    <div class="rate">$\/hour</div>
+                    <p>For a full project, typically: $\ - $\ (depending on scope)</p>
+                    <div class="gate-message">
+                        ⚡ Want a detailed pricing guide & negotiation script? <br>
+                        <button class="btn-gate" onclick="location.href='../lead-capture.html'">Get the Full Guide →</button>
+                    </div>
+                </div>
+            ;
+        });
+    </script>
+    <footer><p>© 2026 Nile Gazer — Free tools</p></footer>
+</body>
+</html>

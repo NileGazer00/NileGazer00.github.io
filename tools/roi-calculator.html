@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev ROI Estimator | Nile Gazer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .calc-container { max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 24px; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        input { width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #ccc; }
+        .result { background: #e8f5e9; padding: 1.5rem; border-radius: 16px; margin-top: 1.5rem; text-align: center; }
+        .gate-message { background: #fef9e6; border-left: 4px solid #e6a017; padding: 1rem; margin-top: 1rem; }
+        .btn-gate { background: #e6a017; color: white; border: none; padding: 0.5rem 1rem; border-radius: 9999px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav><div class="logo">Nile Gazer</div><ul><li><a href="../index.html">Home</a></li><li><a href="../lead-capture.html">Free Estimate</a></li></ul></nav>
+    </header>
+    <main>
+        <div class="calc-container">
+            <h1>Web Development ROI Estimator</h1>
+            <p>Estimate the return on investment of a new website or web app.</p>
+            <div class="form-group"><label>Estimated additional monthly leads from new site</label><input type="number" id="leads" value="20"></div>
+            <div class="form-group"><label>Average conversion rate (%)</label><input type="number" id="conversion" value="3"></div>
+            <div class="form-group"><label>Average customer lifetime value ($)</label><input type="number" id="ltv" value="1500"></div>
+            <div class="form-group"><label>Estimated development cost ($)</label><input type="number" id="cost" value="10000"></div>
+            <button id="calcRoi" style="background:#0a0a0a; color:white; padding:0.75rem; border-radius:9999px; width:100%;">Calculate ROI →</button>
+            <div id="resultArea"></div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('calcRoi').addEventListener('click', () => {
+            const leads = parseFloat(document.getElementById('leads').value);
+            const conversion = parseFloat(document.getElementById('conversion').value) / 100;
+            const ltv = parseFloat(document.getElementById('ltv').value);
+            const cost = parseFloat(document.getElementById('cost').value);
+            const monthlyCustomers = leads * conversion;
+            const monthlyRevenue = monthlyCustomers * ltv;
+            const yearlyRevenue = monthlyRevenue * 12;
+            const roi = ((yearlyRevenue - cost) / cost) * 100;
+            document.getElementById('resultArea').innerHTML = 
+                <div class="result">
+                    <h3>Estimated Annual ROI</h3>
+                    <div class="rate" style="font-size:2rem; font-weight:bold;">%</div>
+                    <p>Expected yearly revenue: utf8{yearlyRevenue.toFixed(0)}</p>
+                    <div class="gate-message">
+                        🔥 Want a custom ROI projection for your business? <br>
+                        <button class="btn-gate" onclick="location.href='../lead-capture.html'">Get Personalized Analysis →</button>
+                    </div>
+                </div>
+            ;
+        });
+    </script>
+    <footer><p>© 2026 Nile Gazer</p></footer>
+</body>
+</html>

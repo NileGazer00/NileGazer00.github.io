@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Timeline Planner | Nile Gazer</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .calc-container { max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 24px; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        input, select { width: 100%; padding: 0.75rem; border-radius: 12px; border: 1px solid #ccc; }
+        .result { background: #e3f2fd; padding: 1.5rem; border-radius: 16px; margin-top: 1.5rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav><div class="logo">Nile Gazer</div><ul><li><a href="../index.html">Home</a></li><li><a href="../lead-capture.html">Free Estimate</a></li></ul></nav>
+    </header>
+    <main>
+        <div class="calc-container">
+            <h1>Project Timeline Planner</h1>
+            <p>Estimate development time based on features and complexity.</p>
+            <div class="form-group"><label>Number of pages/screens</label><input type="number" id="pages" value="10"></div>
+            <div class="form-group"><label>Complexity</label><select id="complexity"><option value="1">Low (mostly static)</option><option value="2">Medium (some interactivity)</option><option value="3">High (complex logic, API integrations)</option></select></div>
+            <div class="form-group"><label>Team size (developers)</label><input type="number" id="team" value="1"></div>
+            <button id="calcTimeline" style="background:#0a0a0a; color:white; padding:0.75rem; border-radius:9999px; width:100%;">Estimate Timeline →</button>
+            <div id="resultArea"></div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('calcTimeline').addEventListener('click', () => {
+            let pages = parseFloat(document.getElementById('pages').value);
+            const complexity = parseFloat(document.getElementById('complexity').value);
+            const team = parseFloat(document.getElementById('team').value);
+            let baseHours = pages * 8 * complexity;
+            baseHours = baseHours + (complexity === 3 ? 40 : 0); // extra for backend
+            let weeks = Math.ceil(baseHours / (team * 40));
+            weeks = Math.max(weeks, 2);
+            let timeline = weeks <= 4 ? ${weeks} weeks : ${Math.ceil(weeks/4)} months;
+            document.getElementById('resultArea').innerHTML = 
+                <div class="result">
+                    <h3>Estimated Development Timeline</h3>
+                    <div class="rate" style="font-size:2rem; font-weight:bold;"></div>
+                    <p>Based on ~ total developer hours.</p>
+                    <div class="gate-message" style="background:#fef9e6; border-left:4px solid #e6a017; padding:1rem; margin-top:1rem;">
+                        📅 Need a precise timeline with milestones? <br>
+                        <button class="btn-gate" style="background:#e6a017; color:white; border:none; padding:0.5rem 1rem; border-radius:9999px; cursor:pointer; margin-top:1rem;" onclick="location.href='../lead-capture.html'">Get Detailed Plan →</button>
+                    </div>
+                </div>
+            ;
+        });
+    </script>
+    <footer><p>© 2026 Nile Gazer</p></footer>
+</body>
+</html>
