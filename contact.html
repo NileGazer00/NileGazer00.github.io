@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Nile Gazer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-box { max-width: 600px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        input, textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 12px; }
+        button { background: #0a0a0a; color: white; border: none; padding: 0.75rem 2rem; border-radius: 9999px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Nile Gazer</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="lead-capture.html">Free Estimate</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="contact-box">
+            <h1>Contact Me</h1>
+            <p>Questions, collaborations, or just to say hi — I'll get back to you fast.</p>
+            <!-- REPLACE mkoejqll with actual ID from formspree.io -->
+            <form action="https://formspree.io/f/mkoejqll" method="POST">
+                <div class="form-group">
+                    <label>Your email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send ?</button>
+            </form>
+        </div>
+    </main>
+    <footer><p>© 2026 Nile Gazer</p></footer>
+</body>
+</html>
